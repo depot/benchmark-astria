@@ -15,10 +15,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
+      - uses: docker/setup-qemu-action@v2
       - uses: docker/setup-buildx-action@v1
       - uses: docker/build-push-action@v2
         with:
           context: ./upstream
+          file: ./upstream/containerfiles/Dockerfile
+          platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -33,4 +36,6 @@ jobs:
       - uses: depot/build-push-action@v1
         with:
           context: ./upstream
+          file: ./upstream/containerfiles/Dockerfile
+          platforms: linux/amd64,linux/arm64
           project: p5v7137kpl
