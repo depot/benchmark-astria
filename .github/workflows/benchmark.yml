@@ -24,7 +24,7 @@ jobs:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
           build-args: |
-            TARGETBINARY="astria-composer"
+            TARGETBINARY=astria-composer
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -35,7 +35,7 @@ jobs:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
           build-args: |
-            TARGETBINARY="astria-conductor"
+            TARGETBINARY=astria-conductor
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -46,7 +46,7 @@ jobs:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
           build-args: |
-            TARGETBINARY="astria-sequencer"
+            TARGETBINARY=astria-sequencer
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -57,7 +57,7 @@ jobs:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
           build-args: |
-            TARGETBINARY="astria-sequencer-relayer"
+            TARGETBINARY=astria-sequencer-relayer
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -77,7 +77,7 @@ jobs:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
           build-args: |
-            TARGETBINARY="astria-composer"
+            TARGETBINARY=astria-composer
           platforms: linux/amd64,linux/arm64
           project: p5v7137kpl
 
@@ -87,7 +87,7 @@ jobs:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
           build-args: |
-            TARGETBINARY="astria-conductor"
+            TARGETBINARY=astria-conductor
           platforms: linux/amd64,linux/arm64
           project: cxfdwp8jw0
 
@@ -97,7 +97,7 @@ jobs:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
           build-args: |
-            TARGETBINARY="astria-sequencer"
+            TARGETBINARY=astria-sequencer
           platforms: linux/amd64,linux/arm64
           project: mqggksr9rg
 
@@ -107,6 +107,6 @@ jobs:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
           build-args: |
-            TARGETBINARY="astria-sequencer-relayer"
+            TARGETBINARY=astria-sequencer-relayer
           platforms: linux/amd64,linux/arm64
           project: fmqsd95w2h
