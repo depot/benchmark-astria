@@ -9,6 +9,15 @@ permissions:
 
 jobs:
   build-with-docker:
+    strategy:
+      matrix:
+        binary:
+          [
+            "astria-composer",
+            "astria-conductor",
+            "astria-sequencer",
+            "astria-sequencer-relayer",
+          ]
     name: Build with Docker
     runs-on: ubuntu-22.04
     steps:
@@ -21,11 +30,22 @@ jobs:
         with:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
+          build-args: |
+            TARGETBINARY=${{ matrix.binary }}
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
   build-with-depot:
+    strategy:
+      matrix:
+        binary:
+          [
+            "astria-composer",
+            "astria-conductor",
+            "astria-sequencer",
+            "astria-sequencer-relayer",
+          ]
     name: Build with Depot
     runs-on: depot-ubuntu-22.04
     steps:
@@ -37,5 +57,7 @@ jobs:
         with:
           context: ./upstream
           file: ./upstream/containerfiles/Dockerfile
+          build-args: |
+            TARGETBINARY=${{ matrix.binary }}
           platforms: linux/amd64,linux/arm64
           project: p5v7137kpl
