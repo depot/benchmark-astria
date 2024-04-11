@@ -8,60 +8,6 @@ permissions:
   id-token: write
 
 jobs:
-  build-with-docker:
-    name: Build with Docker
-    runs-on: ubuntu-22.04-8core
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: recursive
-      - uses: docker/setup-qemu-action@v2
-      - uses: docker/setup-buildx-action@v1
-
-      - name: Composer
-        uses: docker/build-push-action@v2
-        with:
-          context: ./upstream
-          file: ./upstream/containerfiles/Dockerfile
-          build-args: |
-            TARGETBINARY=astria-composer
-          platforms: linux/amd64,linux/arm64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      - name: Conductor
-        uses: docker/build-push-action@v2
-        with:
-          context: ./upstream
-          file: ./upstream/containerfiles/Dockerfile
-          build-args: |
-            TARGETBINARY=astria-conductor
-          platforms: linux/amd64,linux/arm64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      - name: Sequencer
-        uses: docker/build-push-action@v2
-        with:
-          context: ./upstream
-          file: ./upstream/containerfiles/Dockerfile
-          build-args: |
-            TARGETBINARY=astria-sequencer
-          platforms: linux/amd64,linux/arm64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      - name: Sequencer-relayer
-        uses: docker/build-push-action@v2
-        with:
-          context: ./upstream
-          file: ./upstream/containerfiles/Dockerfile
-          build-args: |
-            TARGETBINARY=astria-sequencer-relayer
-          platforms: linux/amd64,linux/arm64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
   build-with-depot:
     name: Build with Depot
     runs-on: depot-ubuntu-22.04
